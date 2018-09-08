@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Serhat's Rock, Paper & Scissors with JS</title>
+  <script>
+    function computerPlay() {
+      let selection = ["Rock", "Paper", "Scissors"];
+      return selection[Math.floor(Math.random()*selection.length)];
+    }
+
+    function playRound(plSelection, coSelection) {
+
+      if (plSelection == "ROCK") {
+        switch (coSelection) {
+          case "ROCK":
+            return "It is a tie!";
+          case "PAPER":
+            return "You Lose! Paper beats Rock!";
+          case "SCISSORS":
+            return "You Win! Rock beats Scissors!";
+
+          break;
+        }
+      } else if (plSelection == "PAPER") {
+        switch (coSelection) {
+          case "ROCK":
+            return "You Win! Paper beats Rock!";
+          case "PAPER":
+            return "It is a tie!";
+          case "SCISSORS":
+            return "You Lose! Scissors beats Paper!";
+
+          break;
+        }
+      } else if (plSelection == "SCISSORS") {
+        switch (coSelection) {
+          case "ROCK":
+            return "You Lose! Rock beats Scıssors!";
+          case "PAPER":
+            return "You win! Scissors beats Paper!";
+          case "SCISSORS":
+            return "It is a tie!";
+
+          break;
+        }
+      } else {
+        return plSelection + " is not a valid play. Check your spelling!";
+      }
+    }
+
+    const playerSelection = 'rock';
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
