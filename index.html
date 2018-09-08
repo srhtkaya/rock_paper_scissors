@@ -3,43 +3,47 @@
 <head>
   <title>Serhat's Rock, Paper & Scissors with JS</title>
   <script>
-    function computerPlay() {
-      let selection = ["Rock", "Paper", "Scissors"];
-      return selection[Math.floor(Math.random()*selection.length)];
-    }
+  function computerPlay() {
+    let selection = ["Rock", "Paper", "Scissors"];
+    return selection[Math.floor(Math.random()*selection.length)];
+  }
+
+  function game() {
+    let scoreComputer = 0;
+    let scorePlayer = 0;
 
     function playRound(plSelection, coSelection) {
 
       if (plSelection == "ROCK") {
         switch (coSelection) {
           case "ROCK":
-            return "It is a tie!";
+          return "It is a tie!";
           case "PAPER":
-            return "You Lose! Paper beats Rock!";
+          return "You Lose! Paper beats Rock!";
           case "SCISSORS":
-            return "You Win! Rock beats Scissors!";
+          return "You Win! Rock beats Scissors!";
 
           break;
         }
       } else if (plSelection == "PAPER") {
         switch (coSelection) {
           case "ROCK":
-            return "You Win! Paper beats Rock!";
+          return "You Win! Paper beats Rock!";
           case "PAPER":
-            return "It is a tie!";
+          return "It is a tie!";
           case "SCISSORS":
-            return "You Lose! Scissors beats Paper!";
+          return "You Lose! Scissors beats Paper!";
 
           break;
         }
       } else if (plSelection == "SCISSORS") {
         switch (coSelection) {
           case "ROCK":
-            return "You Lose! Rock beats Scıssors!";
+          return "You Lose! Rock beats Scıssors!";
           case "PAPER":
-            return "You win! Scissors beats Paper!";
+          return "You Win! Scissors beats Paper!";
           case "SCISSORS":
-            return "It is a tie!";
+          return "It is a tie!";
 
           break;
         }
@@ -47,10 +51,30 @@
         return plSelection + " is not a valid play. Check your spelling!";
       }
     }
+    for (var i = 0; i < 5; i++) {
+      var playerSelection = prompt();
+      const computerSelection = computerPlay();
 
-    const playerSelection = 'rock';
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
+      var result = playRound(playerSelection.toUpperCase(), computerSelection.toUpperCase());
+
+      console.log(result);
+      if (result.search("Win") == -1) {
+        scoreComputer = scoreComputer + 1
+      } else if (result.search("Lose") ==-1) {
+        scorePlayer = scorePlayer + 1;
+      }
+    }
+
+    if (scorePlayer > scoreComputer) {
+      console.log("You won " + scorePlayer + " against " + scoreComputer);
+    } else if (scorePlayer < scoreComputer) {
+      console.log("You lost " + scorePlayer + " against " + scoreComputer);
+    } else {
+      console.log("That gonna be a draw!");
+    }
+  }
+
+  game();
 
   </script>
 </head>
